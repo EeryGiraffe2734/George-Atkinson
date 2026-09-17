@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First CV — a real CV for your first job, even with no experience</title>
+<meta name="description" content="No work experience? Answer a few short questions and get a proper CV in about five minutes. Built for people going for their first job. Free.">
+<meta property="og:title" content="First CV — a real CV for your first job">
+<meta property="og:description" content="No work experience? Answer a few short questions and get a proper CV in about five minutes. Free.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F3F2FC">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --base:#F3F2FC;
+    --ink:#191735;
+    --ink-soft:#5C5885;
+    --violet:#5B3DF5;
+    --violet-deep:#3E27C4;
+    --amber:#FFA23A;
+    --mint:#0FB086;
+    --surface:#FFFFFF;
+    --edge:rgba(25,23,53,0.10);
+    --r-lg:26px;
+    --r-md:18px;
+    --shadow-soft:0 2px 4px rgba(25,23,53,0.04), 0 12px 28px -12px rgba(25,23,53,0.18);
+    --shadow-lift:0 4px 8px rgba(25,23,53,0.05), 0 24px 48px -20px rgba(25,23,53,0.30);
+  }
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    background:var(--base);
+    color:var(--ink);
+    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .glow{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(620px 420px at 12% -6%, rgba(91,61,245,0.16), transparent 62%),
+      radial-gradient(520px 380px at 92% 8%, rgba(255,162,58,0.16), transparent 60%),
+      radial-gradient(680px 500px at 50% 108%, rgba(15,176,134,0.12), transparent 62%);
+  }
+  .shell{
+    position:relative;
+    z-index:1;
+    max-width:620px;
+    margin:0 auto;
+    padding:28px 18px 72px;
+    min-height:100%;
+  }
+  h1,h2,h3{
+    font-family:'Bricolage Grotesque','Figtree',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.03em;
+    line-height:1.02;
+    margin:0;
+  }
+
+  /* ---------- top bar ---------- */
+  .bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:30px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:18px;
+    letter-spacing:-0.03em;
+  }
+  .mark{
+    width:26px;height:26px;
+    border-radius:9px;
+    background:var(--violet);
+    position:relative;
+    flex-shrink:0;
+  }
+  .mark::after{
+    content:"";
+    position:absolute;
+    left:6px; top:7px;
+    width:14px; height:3px;
+    border-radius:2px;
+    background:#fff;
+    box-shadow:0 5px 0 rgba(255,255,255,0.9), 0 10px 0 rgba(255,255,255,0.55);
+  }
+  .bar-note{ font-size:13.5px; color:var(--ink-soft); }
+
+  /* ---------- landing ---------- */
+  .screen{ display:none; }
+  .screen.on{ display:block; }
+
+  .hero h1{
+    font-size:clamp(38px, 10.5vw, 60px);
+    margin-bottom:18px;
+  }
+  .hero .lede{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:30em;
+    margin:0 0 26px;
+  }
+  .cta{
+    font-family:'Figtree',sans-serif;
+    font-weight:600;
+    font-size:16.5px;
+    color:#fff;
+    background:var(--violet);
+    border:none;
+    border-radius:999px;
+    padding:16px 30px;
+    cursor:pointer;
+    box-shadow:0 3px 0 var(--violet-deep), 0 14px 26px -12px rgba(91,61,245,0.75);
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .cta:hover{ background:var(--violet-deep); transform:translateY(-1px); }
+  .cta:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--violet-deep); }
+  .cta-sub{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-top:13px;
+  }
+
+  .proof{
+    display:grid;
+    gap:12px;
+    margin-top:44px;
+  }
+  .proof-item{
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+    background:var(--surface);
+    border:1px solid var(--edge);
+    border-radius:var(--r-md);
+    padding:15px 17px;
+    box-shadow:var(--shadow-soft);
+  }
+  .proof-item b{ display:block; font-weight:600; font-size:15.5px; }
+  .proof-item span{ font-size:14px; color:var(--ink-soft); }
+  .tick{
+    width:22px;height:22px;
+    border-radius:50%;
+    flex-shrink:0;
+    margin-top:2px;
+    background:var(--mint);
+    position:relative;
+  }
+  .tick::after{
+    content:"";
+    position:absolute;
+    left:7px; top:5px;
+    width:5px;height:10px;
+    border:solid #fff;
+    border-width:0 2.5px 2.5px 0;
+    transform:rotate(43deg);
+  }
+  .tick.amber{ background:var(--amber); }
+  .tick.violet{ background:var(--violet); }
+
+  /* ---------- progress ---------- */
+  .progress-wrap{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:22px;
+  }
+  .track{
+    flex:1;
+    height:8px;
+    border-radius:999px;
+    background:rgba(25,23,53,0.09);
+    overflow:hidden;
+  }
+  .fill{
+    height:100%;
+    width:0%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--violet), var(--amber));
+    transition:width .45s cubic-bezier(.22,1,.36,1);
+  }
+  .count{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    flex-shrink:0;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- card stack ---------- */
+  .stack{ position:relative; }
+  .stack::before,
+  .stack::after{
+    content:"";
+    position:absolute;
+    left:14px; right:14px;
+    border-radius:var(--r-lg);
+    background:var(--surface);
+    border:1px solid var(--edge);
+  }
+  .stack::before{ bottom:-9px; height:30px; opacity:0.75; }
+  .stack::after{ bottom:-17px; left:28px; right:28px; height:30px; opacity:0.45; }
+  .stack.last::before, .stack.last::after{ display:none; }
+
+  .card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--edge);
+    border-radius:var(--r-lg);
+    padding:26px 22px 24px;
+    box-shadow:var(--shadow-lift);
+  }
+  .card.enter{ animation:cardIn .34s cubic-bezier(.22,1,.36,1); }
+  @keyframes cardIn{
+    from{ opacity:0; transform:translateY(10px) scale(.985); }
+    to{ opacity:1; transform:none; }
+  }
+
+  .qhead{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-bottom:6px;
+  }
+  .qhead h2{
+    font-size:clamp(21px, 5.4vw, 26px);
+    letter-spacing:-0.025em;
+    line-height:1.14;
+    flex:1;
+  }
+  .helper{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:10px 0 16px;
+  }
+  .optional{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--mint);
+    background:rgba(15,176,134,0.10);
+    border-radius:999px;
+    padding:3px 10px;
+    margin-bottom:12px;
+  }
+
+  .qmark{
+    flex-shrink:0;
+    width:29px;height:29px;
+    border-radius:50%;
+    border:none;
+    background:rgba(91,61,245,0.10);
+    color:var(--violet);
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .qmark:hover{ background:rgba(91,61,245,0.2); }
+  .qmark.open{ background:var(--violet); color:#fff; transform:rotate(180deg); }
+
+  .tipbox{
+    display:none;
+    background:rgba(91,61,245,0.055);
+    border-radius:var(--r-md);
+    padding:15px 17px;
+    margin-bottom:16px;
+    font-size:14.5px;
+  }
+  .tipbox.open{ display:block; animation:cardIn .24s ease; }
+  .tipbox ul{ margin:10px 0 0; padding-left:19px; color:var(--ink-soft); }
+  .tipbox li{ margin-bottom:5px; }
+
+  input[type=text], textarea{
+    width:100%;
+    font-family:'Figtree',sans-serif;
+    font-size:16px;
+    color:var(--ink);
+    background:var(--base);
+    border:1.5px solid transparent;
+    border-radius:var(--r-md);
+    padding:14px 16px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  textarea{ min-height:96px; resize:vertical; line-height:1.5; }
+  input[type=text]::placeholder, textarea::placeholder{ color:#9b97b8; }
+  input[type=text]:focus, textarea:focus{
+    outline:none;
+    background:var(--surface);
+    border-color:var(--violet);
+  }
+
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:22px;
+  }
+  .back{
+    background:none;
+    border:none;
+    font-family:'Figtree',sans-serif;
+    font-size:15px;
+    font-weight:500;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:10px 4px;
+    border-radius:10px;
+  }
+  .back:hover{ color:var(--ink); }
+  .back[disabled]{ opacity:.3; cursor:not-allowed; }
+  .next{
+    font-family:'Figtree',sans-serif;
+    font-weight:600;
+    font-size:15.5px;
+    color:#fff;
+    background:var(--violet);
+    border:none;
+    border-radius:999px;
+    padding:13px 26px;
+    cursor:pointer;
+    box-shadow:0 3px 0 var(--violet-deep);
+    transition:transform .1s ease, background .12s ease;
+  }
+  .next:hover{ background:var(--violet-deep); }
+  .next:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--violet-deep); }
+  .next.ghost{
+    background:transparent;
+    color:var(--violet);
+    box-shadow:inset 0 0 0 1.5px rgba(91,61,245,0.4);
+  }
+  .next.ghost:hover{ background:rgba(91,61,245,0.07); color:var(--violet-deep); }
+
+  /* ---------- chips ---------- */
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .chip{
+    font-family:'Figtree',sans-serif;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--base);
+    border:1.5px solid transparent;
+    border-radius:999px;
+    padding:9px 16px;
+    cursor:pointer;
+    transition:all .14s ease;
+  }
+  .chip:hover{ border-color:rgba(91,61,245,0.35); }
+  .chip.on{
+    background:var(--violet);
+    color:#fff;
+    border-color:var(--violet);
+  }
+  .chip.mine.on{ background:var(--mint); border-color:var(--mint); }
+  .chipcount{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+
+  .choice-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .choice-btn{
+    text-align:left;
+    font-family:'Figtree',sans-serif;
+    font-size:15px;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--base);
+    border:1.5px solid transparent;
+    border-radius:var(--r-md);
+    padding:14px 16px;
+    cursor:pointer;
+    transition:all .14s ease;
+    line-height:1.4;
+  }
+  .choice-btn:hover{ border-color:rgba(91,61,245,0.35); }
+  .choice-btn.on{
+    background:rgba(91,61,245,0.10);
+    border-color:var(--violet);
+    color:var(--violet-deep);
+    font-weight:600;
+  }
+  .addrow{ display:flex; gap:8px; }
+  .addrow input{ flex:1; }
+  .addrow button{
+    flex-shrink:0;
+    font-family:'Figtree',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    color:var(--violet);
+    background:rgba(91,61,245,0.09);
+    border:none;
+    border-radius:999px;
+    padding:0 20px;
+    cursor:pointer;
+  }
+  .addrow button:hover{ background:rgba(91,61,245,0.18); }
+
+  /* ---------- loading ---------- */
+  .loading{ text-align:center; padding:70px 0; }
+  .pulse{
+    width:52px;height:52px;
+    margin:0 auto 20px;
+    border-radius:18px;
+    background:var(--violet);
+    animation:breathe 1.5s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%,100%{ transform:scale(.86) rotate(0deg); border-radius:18px; opacity:.75; }
+    50%{ transform:scale(1) rotate(8deg); border-radius:26px; opacity:1; }
+  }
+  .loading p{ color:var(--ink-soft); font-size:15px; margin:0; }
+
+  /* ---------- result ---------- */
+  .tabs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .tab{
+    font-family:'Figtree',sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    background:rgba(25,23,53,0.05);
+    border:none;
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+  }
+  .tab.on{ background:var(--ink); color:#fff; }
+
+  .paper{
+    background:var(--surface);
+    border:1px solid var(--edge);
+    border-radius:var(--r-lg);
+    box-shadow:var(--shadow-lift);
+    overflow:hidden;
+  }
+  .paper-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:15px 20px;
+    border-bottom:1px solid var(--edge);
+    background:linear-gradient(180deg, rgba(91,61,245,0.05), transparent);
+  }
+  .paper-top h3{ font-size:16px; letter-spacing:-0.02em; }
+  .lockpill{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    background:rgba(25,23,53,0.06);
+    border-radius:999px;
+    padding:4px 11px;
+  }
+  .cvtext{
+    padding:24px 22px;
+    white-space:pre-wrap;
+    font-size:15px;
+    line-height:1.7;
+  }
+  .paper-actions{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    padding:0 20px 20px;
+  }
+  .paper-actions button{
+    font-family:'Figtree',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    border-radius:999px;
+    padding:12px 20px;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ background:#2a2752; }
+  .btn-soft{ background:rgba(25,23,53,0.06); color:var(--ink); }
+  .btn-soft:hover{ background:rgba(25,23,53,0.12); }
+
+  .disclaimer{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:18px;
+    padding:0 4px;
+  }
+
+  /* ---------- paywall ---------- */
+  .pay{
+    background:var(--surface);
+    border:1px solid var(--edge);
+    border-radius:var(--r-lg);
+    box-shadow:var(--shadow-lift);
+    padding:34px 24px 28px;
+    text-align:center;
+  }
+  .pay h2{ font-size:28px; margin-bottom:12px; }
+  .pay p{ color:var(--ink-soft); font-size:15.5px; max-width:30em; margin:0 auto 22px; }
+  .pricetag{
+    display:inline-flex;
+    align-items:baseline;
+    gap:4px;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:46px;
+    letter-spacing:-0.04em;
+    margin-bottom:6px;
+  }
+  .pricetag small{ font-family:'Figtree',sans-serif; font-weight:500; font-size:15px; color:var(--ink-soft); }
+  .paylist{
+    text-align:left;
+    max-width:23em;
+    margin:0 auto 24px;
+    display:grid;
+    gap:9px;
+  }
+  .paylist div{ display:flex; gap:10px; align-items:flex-start; font-size:14.5px; }
+  .payerr{
+    display:none;
+    background:rgba(255,162,58,0.14);
+    border-radius:var(--r-md);
+    padding:13px 16px;
+    font-size:14px;
+    text-align:left;
+    margin-bottom:18px;
+  }
+  .payerr.on{ display:block; }
+
+  @media (min-width:640px){
+    .shell{ padding:38px 24px 90px; }
+    .card{ padding:32px 30px 28px; }
+    .cvtext{ padding:30px 30px; }
+    .proof{ gap:13px; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+  :focus-visible{ outline:3px solid var(--violet); outline-offset:2px; }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="shell">
+
+  <div class="bar">
+    <div class="brand"><span class="mark"></span>First CV</div>
+    <div class="bar-note" id="barNote">Free</div>
+  </div>
+
+  <!-- LANDING -->
+  <section class="screen on hero" id="screenHome">
+    <h1>No experience?<br>You still have a CV in you.</h1>
+    <p class="lede">Most CV tools assume you've already had a job. This one doesn't. Answer a few short questions about school, clubs, and what you're actually like, and get a proper CV you can send today.</p>
+    <button class="cta" id="startBtn">Build my CV</button>
+    <div class="cta-sub">Free. About five minutes. No sign-up.</div>
+
+    <div class="proof">
+      <div class="proof-item">
+        <span class="tick violet"></span>
+        <div><b>Built for a first job</b><span>Retail, hospitality, admin, summer work, apprenticeships.</span></div>
+      </div>
+      <div class="proof-item">
+        <span class="tick"></span>
+        <div><b>Nothing invented</b><span>It only uses what you tell it. No made-up jobs or fake dates.</span></div>
+      </div>
+      <div class="proof-item">
+        <span class="tick amber"></span>
+        <div><b>Stuck on a question? Tap the ?</b><span>Every hard question comes with examples to jog your memory.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUESTION FLOW -->
+  <section class="screen" id="screenFlow">
+    <div class="progress-wrap">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <div class="count" id="count">1 of 16</div>
+    </div>
+    <div class="stack" id="stack">
+      <div class="card" id="card"></div>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="screen" id="screenLoading">
+    <div class="loading">
+      <div class="pulse"></div>
+      <p id="loadingCopy">Writing your CV</p>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="screenResult">
+    <div class="tabs" id="tabs"></div>
+    <div class="paper">
+      <div class="paper-top">
+        <h3 id="cvTitle">Your CV</h3>
+        <span class="lockpill">Answers locked</span>
+      </div>
+      <div class="cvtext" id="cvText"></div>
+      <div class="paper-actions">
+        <button class="btn-primary" id="copyBtn">Copy CV</button>
+        <button class="btn-soft" id="downloadBtn">Download</button>
+        <button class="btn-soft" id="anotherBtn">Make another</button>
+      </div>
+    </div>
+    <p class="disclaimer">Read it before you send it. Check every date and fact, and change anything that doesn't sound like you.</p>
+  </section>
+
+  <!-- PAYWALL -->
+  <section class="screen" id="screenPay">
+    <div class="pay">
+      <h2>Want a second CV?</h2>
+      <div class="pricetag">£2<small>one-off</small></div>
+      <p>Your first CV is free and stays saved. A second one lets you answer fresh for a different kind of job, which beats sending the same CV everywhere.</p>
+      <div class="paylist">
+        <div><span class="tick violet"></span><span>One more full set of answers</span></div>
+        <div><span class="tick"></span><span>Tailored to a different role</span></div>
+        <div><span class="tick amber"></span><span>Switch between your CVs any time</span></div>
+      </div>
+      <div class="payerr" id="payErr"></div>
+      <button class="cta" id="payBtn">Pay £2 by card</button>
+      <div class="cta-sub">Secure checkout by Stripe. You'll come straight back here.</div>
+      <div style="margin-top:18px;"><button class="back" id="payBack">Back to my CV</button></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — the one thing you must change before taking money.
+   Create a £2 Payment Link in your Stripe dashboard, set its
+   post-payment redirect to this page + "?paid=1", then paste
+   the link below. Until then the pay button explains itself
+   instead of sending people to a dead URL.
+
+   The Anthropic API key is NOT configured here anymore — it lives
+   server-side as an environment variable (ANTHROPIC_API_KEY), read
+   by api/skills.js and api/generate.js. Never put an API key in
+   this file, it ships to every visitor's browser.
+   ============================================================ */
+const CONFIG = {
+  stripeLink: "https://buy.stripe.com/6oUdR147e0r1c1E22l3Nm00",
+  pricePerExtraCV: "£2"
+};
+
+/* ---------- tiny storage shim (survives refresh when hosted,
+     silently falls back to memory if storage is unavailable) ---------- */
+const store = (() => {
+  let mem = {};
+  let ok = false;
+  try { window.localStorage.setItem('__t','1'); window.localStorage.removeItem('__t'); ok = true; } catch(e){ ok = false; }
+  return {
+    get(k){ try { return ok ? window.localStorage.getItem(k) : mem[k] ?? null; } catch(e){ return mem[k] ?? null; } },
+    set(k,v){ try { ok ? window.localStorage.setItem(k,v) : (mem[k]=v); } catch(e){ mem[k]=v; } }
+  };
+})();
+
+const GENERIC_SKILLS = [
+  "Reliable and punctual","Good with people","Calm under pressure","Team player",
+  "Quick learner","Organised","Good communicator","Hard-working","Adaptable",
+  "Problem solver","Good attention to detail","Comfortable multitasking",
+  "Customer service mindset","Takes initiative","Works well independently",
+  "Honest and trustworthy","Good time management","Positive attitude"
+];
+
+const questions = [
+  { id:"name", label:"First things first. What's your name?", type:"text",
+    ph:"Alex Morgan" },
+
+  { id:"target", label:"What kind of job are you going for?", type:"text",
+    helper:"A rough idea is fine. It shapes the rest of the questions.",
+    ph:"Retail assistant" },
+
+  { id:"quals", label:"What are you studying, or what have you finished?", type:"area",
+    helper:"GCSEs, A-levels, BTEC. Grades are optional.",
+    ph:"A-levels in Biology, Maths and Geography" },
+
+  { id:"jobs", label:"Have you done any paid work at all?", type:"area", optional:true,
+    helper:"Even one-off or informal counts. Leave blank if none, that's normal.",
+    ph:"Babysitting for a neighbour, summer 2025",
+    tip:"This is the question people wrongly skip. Paid work doesn't have to mean a contract or a uniform.",
+    egs:["Babysitting or dog walking","Helping in a family business","Cash-in-hand gardening or car washing","A few weekend shifts anywhere","Selling things online"] },
+
+  { id:"volunteer", label:"Have you ever helped out without being paid?", type:"area", optional:true,
+    helper:"Leave blank if nothing comes to mind.",
+    ph:"Charity shop on Saturdays",
+    tip:"Volunteering counts even if it was small, one-off, or nobody called it volunteering at the time.",
+    egs:["A few Saturdays in a charity shop","A litter-pick or community clean-up","Helping an elderly neighbour","Running a bake sale or fundraiser","Helping at a church, mosque, or community event"] },
+
+  { id:"clubs", label:"What clubs or teams are you part of?", type:"area", optional:true,
+    helper:"In or out of school.",
+    ph:"School football team, Duke of Edinburgh",
+    tip:"Employers read this as proof you turn up regularly and get on with people.",
+    egs:["A school or local sports team","Duke of Edinburgh","Drama, choir, or band","Scouts or Guides","A gaming, coding, or book club"] },
+
+  { id:"leadership", label:"Have you ever been responsible for something?", type:"area", optional:true,
+    helper:"It doesn't need an official title.",
+    ph:"Vice-captain of the netball team",
+    tip:"Far more common than people think. Responsibility is anything where other people relied on you.",
+    egs:["Prefect or form rep","Team captain or vice-captain","Led a group project","Looking after younger siblings","Organised a trip, event, or fundraiser"] },
+
+  { id:"skills", label:"What are you actually good at?", type:"skills",
+    helper:"Tap the ones that are true. This list is built around the job you picked." },
+
+  { id:"software", label:"Any software or tools you can use?", type:"text", optional:true,
+    ph:"Excel, Canva, Google Docs (leave blank if none)" },
+
+  { id:"achievements", label:"Anything you've achieved that you're proud of?", type:"area", optional:true,
+    helper:"Big or small. Leave blank if nothing springs to mind.",
+    ph:"Grade 5 piano",
+    tip:"It doesn't have to be academic, and it doesn't have to be impressive to anyone but you.",
+    egs:["A music or dance grade","A school prize or merit award","A sports medal or team placing","Finishing a charity run or challenge","A course or workshop certificate"] },
+
+  { id:"availability", label:"When can you work?", type:"text",
+    ph:"Weekends and weekday evenings" },
+
+  { id:"languages", label:"Do you speak any other languages?", type:"text", optional:true,
+    ph:"Conversational Spanish (leave blank if none)" },
+
+  { id:"certs", label:"Any certificates or licences?", type:"text", optional:true,
+    ph:"First aid, food hygiene, driving licence" },
+
+  { id:"scenario1", label:"You're doing a group project and one person isn't pulling their weight. What do you do?", type:"scenario",
+    helper:"Pick whichever you'd actually do, not what sounds best.",
+    options:[
+      { label:"Quietly pick up the extra work myself", trait:"steps up quietly and takes responsibility without making a fuss" },
+      { label:"Talk to them directly and sort it out", trait:"deals with problems directly and isn't afraid of an honest conversation" },
+      { label:"Raise it with the teacher or team lead", trait:"knows when to involve someone with more authority rather than letting things slide" },
+      { label:"Try to bring them back into it", trait:"tries to include and motivate people rather than write them off" }
+    ] },
+
+  { id:"scenario2", label:"A customer or teacher is getting frustrated over something that isn't your fault. What do you do?", type:"scenario",
+    helper:"",
+    options:[
+      { label:"Stay calm and try to sort it out", trait:"stays calm under pressure and focuses on solving the problem" },
+      { label:"Get someone more senior to help", trait:"recognises when to ask for help rather than struggle on alone" },
+      { label:"Apologise and explain clearly what you can do", trait:"communicates clearly and takes ownership even when it isn't their fault" },
+      { label:"Try to lighten the mood a bit", trait:"is personable and uses humour to defuse tense situations" }
+    ] },
+
+  { id:"scenario3", label:"You're given a task with barely any instructions. What do you do?", type:"scenario",
+    helper:"",
+    options:[
+      { label:"Just get started and figure it out", trait:"shows initiative and is comfortable getting started without everything spelled out" },
+      { label:"Ask someone to clarify first", trait:"asks good questions rather than guessing and getting it wrong" },
+      { label:"Look up how it's normally done", trait:"is resourceful and does their own research before asking for help" },
+      { label:"Make a plan before starting", trait:"is organised and thinks things through before diving in" }
+    ] },
+
+  { id:"scenario4", label:"You spot a mistake that isn't yours, and no one else has noticed. What do you do?", type:"scenario",
+    helper:"",
+    options:[
+      { label:"Point it out straight away", trait:"is honest and proactive even when it would be easier to stay quiet" },
+      { label:"Fix it myself if I can", trait:"quietly takes initiative to put things right" },
+      { label:"Mention it privately to whoever's responsible", trait:"is tactful and handles awkward situations with consideration" }
+    ] }
+  ,
+
+  { id:"extra", label:"Anything else that makes you stand out?", type:"area", optional:true,
+    helper:"This is often the bit that gets someone remembered.",
+    ph:"I run a small Instagram page with 2,000 followers",
+    tip:"Anything personal, unusual, or entrepreneurial that hasn't fitted anywhere else.",
+    egs:["A page, blog, or small online shop you run","Something you built or made","Unusual travel or life experience","A side hustle, however small","Something you could talk about happily for ten minutes"] },
+
+  { id:"styleSample", label:"Paste something you've written", type:"area", optional:true,
+    helper:"A school essay, an email, anything. The CV copies your writing style, not your words. Leave blank to skip.",
+    ph:"Paste a paragraph or two here...",
+    tip:"This is what stops it sounding like a robot wrote it. It reads your rhythm and vocabulary, then writes your personal statement to match.",
+    egs:["A paragraph from a school essay","An email you sent a teacher","Your social media bio","A message you're proud of"] }
+];
+
+/* ---------- state ---------- */
+const answers = {};
+let step = 0;
+let tipOpen = false;
+const chipState = {};                 // { questionId: {picked:Set, mine:[]} }
+const skillCache = { key:null, list:[] };
+let savedCVs = [];
+let activeCV = -1;
+let paidSlots = parseInt(store.get('fcv_slots') || '0', 10);
+
+function getChips(id){
+  if(!chipState[id]) chipState[id] = { picked:new Set(), mine:[] };
+  return chipState[id];
+}
+function show(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ---------- payment return ---------- */
+(function(){
+  const p = new URLSearchParams(location.search);
+  if(p.get('paid') === '1'){
+    paidSlots++;
+    store.set('fcv_slots', String(paidSlots));
+    p.delete('paid');
+    history.replaceState({}, '', location.pathname + (p.toString() ? '?'+p : ''));
+  }
+})();
+
+/* ---------- landing ---------- */
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  show('screenFlow');
+  render();
+});
+
+/* ---------- flow ---------- */
+function progress(){
+  document.getElementById('fill').style.width = ((step) / questions.length * 100) + '%';
+  document.getElementById('count').textContent = `${step+1} of ${questions.length}`;
+}
+
+function render(){
+  const q = questions[step];
+  tipOpen = false;
+  progress();
+  document.getElementById('stack').classList.toggle('last', step === questions.length - 1);
+
+  if(q.type === 'skills'){ renderSkills(q); return; }
+
+  const card = document.getElementById('card');
+  card.className = 'card enter';
+  card.innerHTML = `
+    <div class="qhead">
+      <h2>${q.label}</h2>
+      ${q.tip ? `<button class="qmark" id="tipBtn" aria-label="Show examples">?</button>` : ''}
+    </div>
+    ${q.optional ? `<span class="optional">Optional</span>` : ''}
+    ${q.tip ? `<div class="tipbox" id="tipBox">${q.tip}${q.egs ? `<ul>${q.egs.map(e=>`<li>${e}</li>`).join('')}</ul>` : ''}</div>` : ''}
+    ${q.helper ? `<p class="helper">${q.helper}</p>` : ''}
+    ${ q.type === 'chips'
+        ? `<div id="chipZone"></div>`
+        : q.type === 'scenario'
+          ? `<div class="choice-list" id="choiceZone">${q.options.map((o,i)=>`<button type="button" class="choice-btn${answers[q.id]===o.trait?' on':''}" data-i="${i}">${o.label}</button>`).join('')}</div>`
+        : q.type === 'area'
+          ? `<textarea id="field" placeholder="${q.ph||''}">${answers[q.id]||''}</textarea>`
+          : `<input type="text" id="field" placeholder="${q.ph||''}" value="${answers[q.id]||''}">` }
+    <div class="row">
+      <button class="back" id="backBtn" ${step===0?'disabled':''}>Back</button>
+      <button class="next" id="nextBtn">${step===questions.length-1 ? 'Write my CV' : 'Continue'}</button>
+    </div>
+  `;
+
+  if(q.type === 'chips'){
+    const st = getChips(q.id);
+    paintChips(document.getElementById('chipZone'), q.options, st, 'Add your own word');
+  } else if(q.type === 'scenario'){
+    document.querySelectorAll('#choiceZone .choice-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('#choiceZone .choice-btn').forEach(b=>b.classList.remove('on'));
+        btn.classList.add('on');
+        answers[q.id] = q.options[+btn.dataset.i].trait;
+      });
+    });
+  } else {
+    const f = document.getElementById('field');
+    f.focus();
+    f.addEventListener('input', ()=> answers[q.id] = f.value);
+    f.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && q.type === 'text'){ e.preventDefault(); document.getElementById('nextBtn').click(); }
+    });
+  }
+
+  const tb = document.getElementById('tipBtn');
+  if(tb){
+    tb.addEventListener('click', ()=>{
+      tipOpen = !tipOpen;
+      document.getElementById('tipBox').classList.toggle('open', tipOpen);
+      tb.classList.toggle('open', tipOpen);
+    });
+  }
+
+  document.getElementById('backBtn').addEventListener('click', ()=>{ if(step>0){ step--; render(); }});
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    if(q.type === 'chips'){
+      answers[q.id] = [...getChips(q.id).picked].join(', ');
+    } else if(q.type === 'scenario'){
+      // answers[q.id] already set by the choice click above
+    } else {
+      answers[q.id] = document.getElementById('field').value;
+    }
+    advance();
+  });
+}
+
+async function renderSkills(q){
+  const card = document.getElementById('card');
+  card.className = 'card enter';
+  card.innerHTML = `
+    <div class="qhead"><h2>${q.label}</h2></div>
+    <p class="helper">${q.helper}</p>
+    <div id="chipZone"><p class="helper">Finding skills that suit that job...</p></div>
+    <div class="row">
+      <button class="back" id="backBtn">Back</button>
+      <button class="next" id="nextBtn">Continue</button>
+    </div>
+  `;
+  document.getElementById('backBtn').addEventListener('click', ()=>{ if(step>0){ step--; render(); }});
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    answers.skills = [...getChips('skills').picked].join(', ');
+    advance();
+  });
+
+  const key = (answers.target||'').trim().toLowerCase();
+  if(skillCache.key !== key){
+    skillCache.key = key;
+    skillCache.list = await fetchSkills(answers.target);
+  }
+  paintChips(document.getElementById('chipZone'), skillCache.list, getChips('skills'), 'Add your own skill');
+}
+
+async function fetchSkills(target){
+  const t = (target||'').trim();
+  const generic = !t || /^(any|anything|any job|not sure|dont know|don't know|unsure)$/i.test(t);
+  if(generic) return GENERIC_SKILLS;
+  try{
+    // Calls our own server, which holds the Anthropic API key.
+    // See api/skills.js.
+    const r = await fetch("/api/skills", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ target: t })
+    });
+    const d = await r.json();
+    return (Array.isArray(d.skills) && d.skills.length) ? d.skills : GENERIC_SKILLS;
+  } catch(e){ return GENERIC_SKILLS; }
+}
+
+function paintChips(zone, list, st, addLabel){
+  zone.innerHTML = `
+    <div class="chipcount" id="cc">${st.picked.size} picked</div>
+    <div class="chips" id="chips"></div>
+    <div class="addrow">
+      <input type="text" id="chipAdd" placeholder="${addLabel}">
+      <button id="chipAddBtn">Add</button>
+    </div>`;
+  const wrap = document.getElementById('chips');
+  const make = (label, mine) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (mine?' mine':'') + (st.picked.has(label)?' on':'');
+    b.type = 'button';
+    b.textContent = label;
+    b.addEventListener('click', ()=>{
+      st.picked.has(label) ? st.picked.delete(label) : st.picked.add(label);
+      b.classList.toggle('on');
+      document.getElementById('cc').textContent = `${st.picked.size} picked`;
+    });
+    return b;
+  };
+  list.forEach(l => wrap.appendChild(make(l,false)));
+  st.mine.forEach(l => wrap.appendChild(make(l,true)));
+
+  const add = () => {
+    const i = document.getElementById('chipAdd');
+    const v = i.value.trim();
+    if(v && !st.mine.includes(v) && !list.includes(v)){
+      st.mine.push(v); st.picked.add(v); i.value = '';
+      paintChips(zone, list, st, addLabel);
+    }
+  };
+  document.getElementById('chipAddBtn').addEventListener('click', add);
+  document.getElementById('chipAdd').addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); add(); }});
+}
+
+function advance(){
+  if(step === questions.length - 1){ writeCV(); }
+  else { step++; render(); }
+}
+
+/* ---------- generation ---------- */
+const loadingLines = ["Reading your answers","Finding what employers will care about","Writing your personal statement","Tidying the wording"];
+
+async function writeCV(){
+  show('screenLoading');
+  let i = 0;
+  const cycle = setInterval(()=>{
+    i = (i+1) % loadingLines.length;
+    document.getElementById('loadingCopy').textContent = loadingLines[i];
+  }, 1800);
+
+  const core = questions.filter(q => q.id !== 'styleSample');
+  const facts = core.map(q => `${q.label}\n${answers[q.id] && answers[q.id].trim() ? answers[q.id] : '(not provided)'}`).join('\n\n');
+  const sample = (answers.styleSample||'').trim();
+
+  try{
+    // Calls our own server, which holds the Anthropic API key.
+    // See api/generate.js.
+    const r = await fetch("/api/generate", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ facts, sample })
+    });
+    const d = await r.json();
+    clearInterval(cycle);
+    if(!d.text) throw new Error(d.error || 'empty');
+    storeCV(d.text);
+  } catch(e){
+    clearInterval(cycle);
+    storeCV("That didn't go through. Check your connection and try again.\n\nYour answers are safe, so use Make another to run it again.");
+  }
+}
+
+function storeCV(text){
+  const label = (answers.target||'').trim() || `CV ${savedCVs.length+1}`;
+  savedCVs.push({ label, text });
+  activeCV = savedCVs.length - 1;
+  document.getElementById('barNote').textContent = savedCVs.length === 1 ? 'CV ready' : `${savedCVs.length} CVs`;
+  paintResult();
+  show('screenResult');
+}
+
+function paintResult(){
+  const cv = savedCVs[activeCV];
+  document.getElementById('cvText').textContent = cv.text;
+  document.getElementById('cvTitle').textContent = cv.label;
+  const tabs = document.getElementById('tabs');
+  if(savedCVs.length < 2){ tabs.innerHTML = ''; }
+  else {
+    tabs.innerHTML = savedCVs.map((c,i)=>`<button class="tab${i===activeCV?' on':''}" data-i="${i}">${c.label}</button>`).join('');
+    tabs.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ activeCV = +b.dataset.i; paintResult(); }));
+  }
+  const another = document.getElementById('anotherBtn');
+  another.textContent = paidSlots > 0 ? 'Make another (1 paid for)' : `Make another for ${CONFIG.pricePerExtraCV}`;
+}
+
+/* ---------- result actions ---------- */
+document.getElementById('copyBtn').addEventListener('click', e=>{
+  navigator.clipboard.writeText(savedCVs[activeCV].text).then(()=>{
+    e.target.textContent = 'Copied';
+    setTimeout(()=> e.target.textContent = 'Copy CV', 1600);
+  });
+});
+
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+  const cv = savedCVs[activeCV];
+  const safe = (answers.name||'My').trim().split(/\s+/)[0].replace(/[^a-z0-9]/gi,'') || 'My';
+  const blob = new Blob([cv.text], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${safe}-CV.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('anotherBtn').addEventListener('click', ()=>{
+  if(paidSlots > 0){ useSlot(); } else { show('screenPay'); }
+});
+
+function useSlot(){
+  paidSlots--;
+  store.set('fcv_slots', String(paidSlots));
+  Object.keys(answers).forEach(k => delete answers[k]);
+  Object.keys(chipState).forEach(k => delete chipState[k]);
+  skillCache.key = null; skillCache.list = [];
+  step = 0;
+  show('screenFlow');
+  render();
+}
+
+/* ---------- payment ---------- */
+document.getElementById('payBtn').addEventListener('click', ()=>{
+  const err = document.getElementById('payErr');
+  if(!CONFIG.stripeLink || !/^https:\/\/(buy\.stripe\.com|.+\.stripe\.com)/.test(CONFIG.stripeLink)){
+    err.textContent = "Card payments aren't switched on yet. Add your Stripe Payment Link to CONFIG.stripeLink at the top of the page source, and set its post-payment redirect to this page with ?paid=1 on the end.";
+    err.classList.add('on');
+    return;
+  }
+  const back = encodeURIComponent(location.origin + location.pathname + '?paid=1');
+  location.href = CONFIG.stripeLink + (CONFIG.stripeLink.includes('?') ? '&' : '?') + 'redirect_url=' + back;
+});
+document.getElementById('payBack').addEventListener('click', ()=> show('screenResult'));
+</script>
+</body>
+</html>
