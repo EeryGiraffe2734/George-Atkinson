@@ -13,7 +13,7 @@
 function baseSystem(hasSample, hasJobAd) {
   return `You write first CVs for people aged roughly 16-19 in the UK applying for their first paid job, who usually have little or no formal work history.
 
-You reply with ONE JSON object and nothing else. No prose, no code fences, no explanation.
+Your entire reply is ONE JSON object and nothing else. Start your reply with { and end it with }. No preamble, no explanation, no code fences.
 
 Shape, exactly these keys:
 {
@@ -56,8 +56,9 @@ Rules:
 }
 
 // Models sometimes wrap JSON in prose or fences despite instructions.
-// Pull the outermost object out and parse that.
-function extractJSON(raw) {
+// Pull the outermost object out and parse that. Exported so it can be
+// tested directly; Vercel only ever calls the default export below.
+export function extractJSON(raw) {
   let s = String(raw || "").trim();
   s = s.replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
   const a = s.indexOf("{");
@@ -86,7 +87,7 @@ function cleanList(v) {
 
 // Guarantees every key exists and is the right type, so the page never
 // has to defend against a missing field.
-function normalise(o) {
+export function normalise(o) {
   return {
     headline: asString(o.headline),
     statement: asString(o.statement),
@@ -139,12 +140,7 @@ export default async function handler(req, res) {
         model: "claude-sonnet-5",
         max_tokens: 2000,
         system: baseSystem(!!sample, !!jobAd),
-        messages: [
-          { role: "user", content: msg },
-          // Prefilling an opening brace forces the reply to start as JSON
-          // instead of "Here's your CV:".
-          { role: "assistant", content: "{" }
-        ]
+        messages: [{ role: "user", content: msg }]
       })
     });
 
@@ -161,8 +157,7 @@ export default async function handler(req, res) {
     const text = (d.content || []).map(b => (b.type === "text" ? b.text : "")).join("").trim();
     if (!text) throw new Error("empty response from Anthropic");
 
-    // Put back the brace we prefilled.
-    const cv = normalise(extractJSON("{" + text));
+    const cv = normalise(extractJSON(text));
 
     if (!cv.statement && !cv.education.length && !cv.skills.length) {
       throw new Error("model returned an empty CV");
