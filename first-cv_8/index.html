@@ -558,11 +558,173 @@
   }
   .payerr.on{ display:block; }
 
+  /* ---------- template picker ---------- */
+  .tplbar{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-bottom:13px;
+  }
+  .tplbtn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-family:'Figtree',sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    background:rgba(25,23,53,0.05);
+    border:1.5px solid transparent;
+    border-radius:999px;
+    padding:6px 14px 6px 7px;
+    cursor:pointer;
+    transition:all .14s ease;
+  }
+  .tplbtn:hover{ border-color:rgba(91,61,245,0.32); }
+  .tplbtn.on{ background:var(--surface); border-color:var(--violet); color:var(--ink); font-weight:600; }
+  .swatch{
+    width:16px;height:16px;
+    border-radius:5px;
+    flex-shrink:0;
+    border:1px solid rgba(0,0,0,0.12);
+  }
+
+  /* ---------- the CV sheet itself (this is what prints) ---------- */
+  .sheet{
+    background:#fff;
+    color:#16161d;
+    font-family:'Figtree',-apple-system,sans-serif;
+    font-size:13.5px;
+    line-height:1.52;
+    padding:30px 28px 34px;
+    overflow-wrap:break-word;
+  }
+  .s-head{ margin-bottom:17px; }
+  .s-name{
+    font-family:'Figtree',sans-serif;
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-0.025em;
+    line-height:1.08;
+    margin:0;
+  }
+  .s-headline{ font-size:14px; font-weight:600; color:#4a4a63; margin-top:3px; }
+  .s-contact{ font-size:12.5px; color:#5c5c72; margin-top:7px; }
+  .s-contact span + span::before{ content:" · "; color:#b7b7c6; }
+  .s-sec{ margin-top:16px; }
+  .s-sec h2{
+    font-family:'Figtree',sans-serif;
+    font-size:11.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
+    color:#16161d;
+    margin:0 0 7px;
+  }
+  .s-p{ margin:0; }
+  .s-entry{ margin-bottom:10px; }
+  .s-entry:last-child{ margin-bottom:0; }
+  .s-etop{ display:flex; justify-content:space-between; gap:14px; align-items:baseline; }
+  .s-etitle{ font-weight:700; }
+  .s-edates{ font-size:12px; color:#6c6c82; flex-shrink:0; white-space:nowrap; }
+  .s-eorg{ font-size:12.8px; color:#55556b; }
+  .s-list{ margin:4px 0 0; padding-left:17px; }
+  .s-list li{ margin-bottom:2px; }
+
+  /* --- 1. Classic: safe anywhere, the one to pick if unsure --- */
+  .tpl-classic .s-head{ text-align:center; border-bottom:2px solid #16161d; padding-bottom:12px; }
+  .tpl-classic .s-sec h2{ border-bottom:1px solid #d9d9e3; padding-bottom:4px; }
+
+  /* --- 2. Modern: quiet colour, office and apprenticeship roles --- */
+  .tpl-modern .s-head{ border-bottom:3px solid #5B3DF5; padding-bottom:12px; }
+  .tpl-modern .s-name{ color:#2f1c9e; }
+  .tpl-modern .s-sec h2{ color:#3E27C4; }
+
+  /* --- 3. Bold: strong header, stands out in a pile on a counter --- */
+  .tpl-bold{ padding-top:0; }
+  .tpl-bold .s-head{
+    background:#16161d;
+    color:#fff;
+    margin:0 -28px 19px;
+    padding:26px 28px 21px;
+  }
+  .tpl-bold .s-name{ font-size:31px; }
+  .tpl-bold .s-headline{ color:rgba(255,255,255,0.88); }
+  .tpl-bold .s-contact{ color:rgba(255,255,255,0.72); }
+  .tpl-bold .s-contact span + span::before{ color:rgba(255,255,255,0.4); }
+
+  /* --- 4. Compact: for when you've got a lot to say --- */
+  .tpl-compact{ font-size:12.4px; line-height:1.42; padding:26px 26px 30px; }
+  .tpl-compact .s-name{ font-size:23px; }
+  .tpl-compact .s-sec{ margin-top:12px; }
+  .tpl-compact .s-sec h2{ font-size:11px; margin-bottom:5px; }
+  .tpl-compact .s-entry{ margin-bottom:7px; }
+  .tpl-compact .s-head{ border-bottom:1px solid #d9d9e3; padding-bottom:9px; margin-bottom:13px; }
+
+  /* --- 5. Warm: cafés, pubs, care, anywhere people-facing --- */
+  .tpl-warm{ padding-top:0; }
+  .tpl-warm .s-head{
+    background:#FFF3E3;
+    margin:0 -28px 19px;
+    padding:25px 28px 19px;
+    border-bottom:3px solid #FFA23A;
+  }
+  .tpl-warm .s-name{ font-size:29px; color:#5c3600; }
+  .tpl-warm .s-sec h2{ color:#9c5800; }
+
+  /* --- 6. Fresh: green accents, clean, good for first office jobs --- */
+  .tpl-fresh .s-head{ padding-bottom:13px; border-bottom:1px solid #d9d9e3; }
+  .tpl-fresh .s-sec{ padding-left:13px; border-left:3px solid #0FB086; }
+  .tpl-fresh .s-sec h2{ color:#07795c; }
+
+  /* ---------- job advert paste screen ---------- */
+  .adnote{
+    background:rgba(15,176,134,0.10);
+    border-radius:var(--r-md);
+    padding:13px 16px;
+    font-size:14px;
+    margin-bottom:16px;
+  }
+
   @media (min-width:640px){
     .shell{ padding:38px 24px 90px; }
     .card{ padding:32px 30px 28px; }
-    .cvtext{ padding:30px 30px; }
+    .sheet{ padding:38px 36px 42px; }
+    .tpl-bold .s-head{ margin:0 -36px 21px; padding:30px 36px 24px; }
+    .tpl-warm .s-head{ margin:0 -36px 21px; padding:29px 36px 22px; }
     .proof{ gap:13px; }
+  }
+
+  /* ---------- printing (this is how the PDF gets made) ---------- */
+  @media print{
+    @page{ size:A4; margin:13mm; }
+    html,body{ background:#fff !important; }
+    .glow,.bar,.tabs,.tplbar,.paper-top,.paper-actions,.disclaimer,.printhide{ display:none !important; }
+    .shell{ max-width:none; margin:0; padding:0; min-height:0; }
+    .screen{ display:none !important; }
+    .screen.on{ display:block !important; }
+    .paper{ border:none !important; box-shadow:none !important; border-radius:0 !important; overflow:visible !important; }
+    /* Tightened so a CV with every section filled still lands on one
+       page. A second page holding one line looks careless. */
+    .sheet{ padding:0 !important; font-size:10pt; line-height:1.4; }
+    .s-name{ font-size:21pt; }
+    .s-headline{ font-size:11pt; }
+    .s-contact{ font-size:9.4pt; margin-top:5px; }
+    .s-head{ margin-bottom:11px; }
+    .s-sec{ margin-top:10px; }
+    .s-sec h2{ font-size:8.8pt; margin-bottom:4px; }
+    .s-entry{ margin-bottom:6px; }
+    .s-list{ margin-top:2px; }
+    .s-list li{ margin-bottom:0; }
+    .tpl-bold .s-head,
+    .tpl-warm .s-head{
+      margin:0 0 16px !important;
+      padding:18px 20px !important;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+    .s-sec, .s-entry{ break-inside:avoid; page-break-inside:avoid; }
+    .s-name{ break-after:avoid; page-break-after:avoid; }
   }
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; }
@@ -624,31 +786,59 @@
   <!-- RESULT -->
   <section class="screen" id="screenResult">
     <div class="tabs" id="tabs"></div>
+    <div class="tplbar" id="tplbar"></div>
     <div class="paper">
       <div class="paper-top">
         <h3 id="cvTitle">Your CV</h3>
-        <span class="lockpill">Answers locked</span>
+        <span class="lockpill" id="cvBadge">Free</span>
       </div>
-      <div class="cvtext" id="cvText"></div>
+      <div class="sheet tpl-classic" id="sheet"></div>
       <div class="paper-actions">
-        <button class="btn-primary" id="copyBtn">Copy CV</button>
-        <button class="btn-soft" id="downloadBtn">Download</button>
-        <button class="btn-soft" id="anotherBtn">Make another</button>
+        <button class="btn-primary" id="pdfBtn">Download PDF</button>
+        <button class="btn-soft" id="copyBtn">Copy text</button>
+        <button class="btn-soft" id="tailorBtn">Tailor to a job ad</button>
+        <button class="btn-soft" id="restartBtn">Start again</button>
       </div>
     </div>
-    <p class="disclaimer">Read it before you send it. Check every date and fact, and change anything that doesn't sound like you.</p>
+    <p class="disclaimer">Read it before you send it. Check every date and fact, and change anything that doesn't sound like you. To save it as a PDF, pick "Save as PDF" as the printer.</p>
+  </section>
+
+  <!-- JOB ADVERT -->
+  <section class="screen" id="screenAd">
+    <div class="card">
+      <div class="qhead"><h2>Paste the job advert</h2></div>
+      <div class="adnote">Copy the whole advert, especially the part listing what they're looking for. The more you paste, the better the match. Nothing gets invented, it only reorders and rewords what you already told us.</div>
+      <textarea id="adField" placeholder="Paste the full job advert here..." style="min-height:190px;"></textarea>
+      <div class="payerr" id="adErr"></div>
+      <div class="row">
+        <button class="back" id="adBack">Back</button>
+        <button class="next" id="adGo">Tailor my CV</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOMETHING WENT WRONG -->
+  <section class="screen" id="screenErr">
+    <div class="card">
+      <div class="qhead"><h2>That didn't go through</h2></div>
+      <p class="helper" id="errCopy">Check your connection and try again. Nothing's lost, your answers are still saved.</p>
+      <div class="row">
+        <button class="back" id="errBack">Back</button>
+        <button class="next" id="errRetry">Try again</button>
+      </div>
+    </div>
   </section>
 
   <!-- PAYWALL -->
   <section class="screen" id="screenPay">
     <div class="pay">
-      <h2>Want a second CV?</h2>
+      <h2>Tailor it to the job</h2>
       <div class="pricetag">£2<small>one-off</small></div>
-      <p>Your first CV is free and stays saved. A second one lets you answer fresh for a different kind of job, which beats sending the same CV everywhere.</p>
+      <p>Paste in the advert you're actually applying to, and your CV gets rewritten to match what that employer asked for. Same honest facts, aimed at that one job.</p>
       <div class="paylist">
-        <div><span class="tick violet"></span><span>One more full set of answers</span></div>
-        <div><span class="tick"></span><span>Tailored to a different role</span></div>
-        <div><span class="tick amber"></span><span>Switch between your CVs any time</span></div>
+        <div><span class="tick violet"></span><span>Leads with the skills that advert asks for</span></div>
+        <div><span class="tick"></span><span>Personal statement rewritten for the role</span></div>
+        <div><span class="tick amber"></span><span>Keeps your free CV too, switch between them</span></div>
       </div>
       <div class="payerr" id="payErr"></div>
       <button class="cta" id="payBtn">Pay £2 by card</button>
@@ -661,11 +851,17 @@
 
 <script>
 /* ============================================================
-   CONFIG — the one thing you must change before taking money.
-   Create a £2 Payment Link in your Stripe dashboard, set its
-   post-payment redirect to this page + "?paid=1", then paste
-   the link below. Until then the pay button explains itself
-   instead of sending people to a dead URL.
+   CONFIG — the Stripe Payment Link people pay through.
+
+   In the Stripe dashboard, that link's "After the payment" setting
+   must redirect to this site with the session id attached:
+
+     https://YOUR-SITE.vercel.app/?session_id={CHECKOUT_SESSION_ID}
+
+   Type {CHECKOUT_SESSION_ID} exactly, braces included. Stripe swaps
+   in the real id, and api/verify-payment.js then asks Stripe whether
+   that payment genuinely happened. Without this, the paid feature
+   unlocks for anyone who edits the address bar.
 
    The Anthropic API key is NOT configured here anymore — it lives
    server-side as an environment variable (ANTHROPIC_API_KEY), read
@@ -673,7 +869,7 @@
    this file, it ships to every visitor's browser.
    ============================================================ */
 const CONFIG = {
-  stripeLink: "https://buy.stripe.com/6oUdR147e0r1c1E22l3Nm00",           // e.g. "https://buy.stripe.com/xxxxxxxx"
+  stripeLink: "https://buy.stripe.com/6oUdR147e0r1c1E22l3Nm00",
   pricePerExtraCV: "£2"
 };
 
@@ -796,11 +992,34 @@ const questions = [
     tip:"Anything personal, unusual, or entrepreneurial that hasn't fitted anywhere else.",
     egs:["A page, blog, or small online shop you run","Something you built or made","Unusual travel or life experience","A side hustle, however small","Something you could talk about happily for ten minutes"] },
 
+  { id:"contact", label:"How can employers reach you?", type:"contact",
+    helper:"This goes at the very top of your CV. Leave anything blank you'd rather not put on there.",
+    fields:[
+      { k:"email", label:"Email",        ph:"alex.morgan@email.com" },
+      { k:"phone", label:"Phone",        ph:"07700 900123" },
+      { k:"town",  label:"Town or city", ph:"Guildford" }
+    ] },
+
   { id:"styleSample", label:"Paste something you've written", type:"area", optional:true,
     helper:"A school essay, an email, anything. The CV copies your writing style, not your words. Leave blank to skip.",
     ph:"Paste a paragraph or two here...",
     tip:"This is what stops it sounding like a robot wrote it. It reads your rhythm and vocabulary, then writes your personal statement to match.",
     egs:["A paragraph from a school essay","An email you sent a teacher","Your social media bio","A message you're proud of"] }
+];
+
+/* ---------- templates ----------
+   Each one is a CSS class on the sheet (.tpl-classic and so on).
+   All single-column and real text, so the systems employers use to
+   scan CVs can still read them. That's also why there's no photo
+   option: UK advice is clear that photos invite bias and trip up
+   CV-scanning software. */
+const TEMPLATES = [
+  { id:'classic', name:'Classic', swatch:'#16161d', note:'Safe anywhere. Pick this if unsure.' },
+  { id:'modern',  name:'Modern',  swatch:'#5B3DF5', note:'Office work and apprenticeships.' },
+  { id:'bold',    name:'Bold',    swatch:'#3a3a4a', note:'Stands out in a pile on a counter.' },
+  { id:'compact', name:'Compact', swatch:'#9a9ab0', note:'For when you have a lot to say.' },
+  { id:'warm',    name:'Warm',    swatch:'#FFA23A', note:'Cafés, pubs, care, people-facing work.' },
+  { id:'fresh',   name:'Fresh',   swatch:'#0FB086', note:'Clean and modern, good all-rounder.' }
 ];
 
 /* ---------- state ---------- */
@@ -809,13 +1028,54 @@ let step = 0;
 let tipOpen = false;
 const chipState = {};                 // { questionId: {picked:Set, mine:[]} }
 const skillCache = { key:null, list:[] };
-let savedCVs = [];
+let savedCVs = [];                    // [{ label, cv, tailored }]
 let activeCV = -1;
 let paidSlots = parseInt(store.get('fcv_slots') || '0', 10);
+let currentTpl = store.get('fcv_tpl') || 'classic';
+
+function readContact(){
+  answers.contact = answers.contact || {};
+  document.querySelectorAll('.cfield').forEach(inp=>{
+    answers.contact[inp.dataset.k] = inp.value.trim();
+  });
+}
+
+/* ---------- saving your work ----------
+   Paying means leaving for Stripe and coming back, which reloads the
+   page. Without this, your CV would be gone when you got back. */
+function persist(){
+  try{
+    store.set('fcv_state', JSON.stringify({ answers, savedCVs, activeCV }));
+  }catch(e){ /* storage full or blocked, not worth breaking over */ }
+}
+function restore(){
+  try{
+    const s = JSON.parse(store.get('fcv_state') || 'null');
+    if(s && Array.isArray(s.savedCVs) && s.savedCVs.length){
+      // Older saved CVs were a lump of text, not structured. Drop those
+      // rather than crash trying to lay them out.
+      const usable = s.savedCVs.filter(x => x && x.cv && typeof x.cv === 'object');
+      if(!usable.length) return false;
+      Object.assign(answers, s.answers || {});
+      savedCVs = usable;
+      activeCV = typeof s.activeCV === 'number' ? s.activeCV : 0;
+      if(activeCV < 0 || activeCV >= savedCVs.length) activeCV = 0;
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
 
 function getChips(id){
   if(!chipState[id]) chipState[id] = { picked:new Set(), mine:[] };
   return chipState[id];
+}
+// Anything the user typed gets escaped before it goes back into HTML,
+// otherwise an apostrophe or a quote in a name breaks the markup.
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => (
+    { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]
+  ));
 }
 function show(id){
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('on'));
@@ -823,16 +1083,8 @@ function show(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-/* ---------- payment return ---------- */
-(function(){
-  const p = new URLSearchParams(location.search);
-  if(p.get('paid') === '1'){
-    paidSlots++;
-    store.set('fcv_slots', String(paidSlots));
-    p.delete('paid');
-    history.replaceState({}, '', location.pathname + (p.toString() ? '?'+p : ''));
-  }
-})();
+/* Restoring saved work and checking a Stripe payment both happen at the
+   very bottom of this script, once every function below exists. */
 
 /* ---------- landing ---------- */
 document.getElementById('startBtn').addEventListener('click', ()=>{
@@ -868,9 +1120,11 @@ function render(){
         ? `<div id="chipZone"></div>`
         : q.type === 'scenario'
           ? `<div class="choice-list" id="choiceZone">${q.options.map((o,i)=>`<button type="button" class="choice-btn${answers[q.id]===o.trait?' on':''}" data-i="${i}">${o.label}</button>`).join('')}</div>`
+        : q.type === 'contact'
+          ? q.fields.map(f=>`<label style="display:block;margin-bottom:12px;"><span style="display:block;font-size:13.5px;font-weight:600;color:var(--ink-soft);margin-bottom:5px;">${f.label}</span><input type="text" class="cfield" data-k="${f.k}" placeholder="${esc(f.ph)}" value="${esc((answers.contact||{})[f.k]||'')}"></label>`).join('')
         : q.type === 'area'
-          ? `<textarea id="field" placeholder="${q.ph||''}">${answers[q.id]||''}</textarea>`
-          : `<input type="text" id="field" placeholder="${q.ph||''}" value="${answers[q.id]||''}">` }
+          ? `<textarea id="field" placeholder="${esc(q.ph||'')}">${esc(answers[q.id]||'')}</textarea>`
+          : `<input type="text" id="field" placeholder="${esc(q.ph||'')}" value="${esc(answers[q.id]||'')}">` }
     <div class="row">
       <button class="back" id="backBtn" ${step===0?'disabled':''}>Back</button>
       <button class="next" id="nextBtn">${step===questions.length-1 ? 'Write my CV' : 'Continue'}</button>
@@ -887,6 +1141,12 @@ function render(){
         btn.classList.add('on');
         answers[q.id] = q.options[+btn.dataset.i].trait;
       });
+    });
+  } else if(q.type === 'contact'){
+    const first = document.querySelector('.cfield');
+    if(first) first.focus();
+    document.querySelectorAll('.cfield').forEach(inp=>{
+      inp.addEventListener('input', readContact);
     });
   } else {
     const f = document.getElementById('field');
@@ -912,6 +1172,8 @@ function render(){
       answers[q.id] = [...getChips(q.id).picked].join(', ');
     } else if(q.type === 'scenario'){
       // answers[q.id] already set by the choice click above
+    } else if(q.type === 'contact'){
+      readContact();
     } else {
       answers[q.id] = document.getElementById('field').value;
     }
@@ -1005,18 +1267,33 @@ function advance(){
 
 /* ---------- generation ---------- */
 const loadingLines = ["Reading your answers","Finding what employers will care about","Writing your personal statement","Tidying the wording"];
+const tailorLines  = ["Reading the advert","Working out what they're asking for","Matching it to what you've done","Rewriting your statement for this role"];
+const A = v => (Array.isArray(v) ? v : []);
+let lastJobAd = '';
 
-async function writeCV(){
+function buildFacts(){
+  // Contact details are left out on purpose. The page prints those
+  // straight from what you typed, so they can't get reworded.
+  return questions
+    .filter(q => q.id !== 'styleSample' && q.id !== 'contact')
+    .map(q => {
+      const v = answers[q.id];
+      const text = (typeof v === 'string' && v.trim()) ? v.trim() : '(not provided)';
+      return `${q.label}\n${text}`;
+    })
+    .join('\n\n');
+}
+
+async function writeCV(jobAd){
+  lastJobAd = jobAd || '';
   show('screenLoading');
+  const lines = jobAd ? tailorLines : loadingLines;
   let i = 0;
+  document.getElementById('loadingCopy').textContent = lines[0];
   const cycle = setInterval(()=>{
-    i = (i+1) % loadingLines.length;
-    document.getElementById('loadingCopy').textContent = loadingLines[i];
+    i = (i+1) % lines.length;
+    document.getElementById('loadingCopy').textContent = lines[i];
   }, 1800);
-
-  const core = questions.filter(q => q.id !== 'styleSample');
-  const facts = core.map(q => `${q.label}\n${answers[q.id] && answers[q.id].trim() ? answers[q.id] : '(not provided)'}`).join('\n\n');
-  const sample = (answers.styleSample||'').trim();
 
   try{
     // Calls our own server, which holds the Anthropic API key.
@@ -1024,87 +1301,294 @@ async function writeCV(){
     const r = await fetch("/api/generate", {
       method:"POST",
       headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({ facts, sample })
+      body: JSON.stringify({
+        facts: buildFacts(),
+        sample: (answers.styleSample||'').trim(),
+        jobAd: jobAd || ''
+      })
     });
     const d = await r.json();
     clearInterval(cycle);
-    if(!d.text) throw new Error(d.error || 'empty');
-    storeCV(d.text);
+    if(!d || !d.cv) throw new Error((d && d.error) || 'empty');
+    storeCV(d.cv, jobAd);
+    return true;
   } catch(e){
     clearInterval(cycle);
-    storeCV("That didn't go through. Check your connection and try again.\n\nYour answers are safe, so use Make another to run it again.");
+    document.getElementById('errCopy').textContent =
+      "Check your connection and try again. Nothing's lost, your answers are still saved.";
+    show('screenErr');
+    return false;
   }
 }
 
-function storeCV(text){
-  const label = (answers.target||'').trim() || `CV ${savedCVs.length+1}`;
-  savedCVs.push({ label, text });
+function storeCV(cv, jobAd){
+  const label = jobAd
+    ? ((cv.headline || 'Tailored').trim().slice(0, 26))
+    : ((answers.target||'').trim() || 'My CV');
+  savedCVs.push({ label, cv, tailored: !!jobAd });
   activeCV = savedCVs.length - 1;
-  document.getElementById('barNote').textContent = savedCVs.length === 1 ? 'CV ready' : `${savedCVs.length} CVs`;
+  document.getElementById('barNote').textContent =
+    savedCVs.length === 1 ? 'CV ready' : `${savedCVs.length} CVs`;
+  persist();
   paintResult();
   show('screenResult');
 }
 
+/* ---------- drawing the CV ---------- */
+function contactBits(){
+  const c = answers.contact || {};
+  return [c.email, c.phone, c.town].map(v => (v||'').trim()).filter(Boolean);
+}
+
+function entriesHTML(list){
+  return A(list).map(e => `
+    <div class="s-entry">
+      <div class="s-etop">
+        <span class="s-etitle">${esc(e.title)}</span>
+        ${e.dates ? `<span class="s-edates">${esc(e.dates)}</span>` : ''}
+      </div>
+      ${e.org ? `<div class="s-eorg">${esc(e.org)}</div>` : ''}
+      ${A(e.bullets).length ? `<ul class="s-list">${A(e.bullets).map(b=>`<li>${esc(b)}</li>`).join('')}</ul>` : ''}
+    </div>`).join('');
+}
+
+// An empty section is left out completely rather than printed blank.
+const sec = (title, inner) => inner ? `<section class="s-sec"><h2>${title}</h2>${inner}</section>` : '';
+const dotted = list => A(list).length ? `<p class="s-p">${A(list).map(esc).join(' &middot; ')}</p>` : '';
+
+function renderSheet(){
+  const item = savedCVs[activeCV];
+  if(!item) return;
+  const cv = item.cv || {};
+  const bits = contactBits();
+
+  const sheet = document.getElementById('sheet');
+  sheet.className = 'sheet tpl-' + currentTpl;
+  sheet.innerHTML = `
+    <header class="s-head">
+      <h1 class="s-name">${esc((answers.name||'').trim() || 'Your Name')}</h1>
+      ${cv.headline ? `<div class="s-headline">${esc(cv.headline)}</div>` : ''}
+      ${bits.length ? `<div class="s-contact">${bits.map(b=>`<span>${esc(b)}</span>`).join('')}</div>` : ''}
+    </header>
+    ${sec('Personal Statement', cv.statement ? `<p class="s-p">${esc(cv.statement)}</p>` : '')}
+    ${sec('Education', entriesHTML(cv.education))}
+    ${sec('Experience', entriesHTML(cv.experience))}
+    ${sec('Volunteering', entriesHTML(cv.volunteering))}
+    ${sec('Skills', dotted(cv.skills))}
+    ${sec('Achievements', A(cv.achievements).length ? `<ul class="s-list">${A(cv.achievements).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>` : '')}
+    ${sec('Certificates', dotted(cv.certificates))}
+    ${sec('Languages', dotted(cv.languages))}
+    ${sec('Interests', dotted(cv.interests))}
+    ${sec('Availability', cv.availability ? `<p class="s-p">${esc(cv.availability)}</p>` : '')}
+  `;
+}
+
 function paintResult(){
-  const cv = savedCVs[activeCV];
-  document.getElementById('cvText').textContent = cv.text;
-  document.getElementById('cvTitle').textContent = cv.label;
+  const item = savedCVs[activeCV];
+  if(!item) return;
+
+  document.getElementById('cvTitle').textContent = item.label;
+  document.getElementById('cvBadge').textContent = item.tailored ? 'Tailored' : 'Free';
+
   const tabs = document.getElementById('tabs');
-  if(savedCVs.length < 2){ tabs.innerHTML = ''; }
-  else {
-    tabs.innerHTML = savedCVs.map((c,i)=>`<button class="tab${i===activeCV?' on':''}" data-i="${i}">${c.label}</button>`).join('');
-    tabs.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{ activeCV = +b.dataset.i; paintResult(); }));
+  if(savedCVs.length < 2){
+    tabs.innerHTML = '';
+  } else {
+    tabs.innerHTML = savedCVs.map((c,i)=>`<button class="tab${i===activeCV?' on':''}" data-i="${i}">${esc(c.label)}</button>`).join('');
+    tabs.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+      activeCV = +b.dataset.i; persist(); paintResult();
+    }));
   }
-  const another = document.getElementById('anotherBtn');
-  another.textContent = paidSlots > 0 ? 'Make another (1 paid for)' : `Make another for ${CONFIG.pricePerExtraCV}`;
+
+  const bar = document.getElementById('tplbar');
+  bar.innerHTML = TEMPLATES.map(t=>
+    `<button class="tplbtn${t.id===currentTpl?' on':''}" data-t="${t.id}" title="${esc(t.note)}"><span class="swatch" style="background:${t.swatch}"></span>${t.name}</button>`
+  ).join('');
+  bar.querySelectorAll('.tplbtn').forEach(b=>b.addEventListener('click',()=>{
+    currentTpl = b.dataset.t;
+    store.set('fcv_tpl', currentTpl);
+    paintResult();
+  }));
+
+  document.getElementById('tailorBtn').textContent = paidSlots > 0
+    ? 'Tailor to a job ad (paid for)'
+    : `Tailor to a job ad (${CONFIG.pricePerExtraCV})`;
+
+  renderSheet();
+}
+
+/* ---------- plain text version, for the copy button ---------- */
+function cvToText(){
+  const item = savedCVs[activeCV];
+  if(!item) return '';
+  const cv = item.cv || {};
+  const out = [(answers.name||'').trim() || 'Your Name'];
+  if(cv.headline) out.push(cv.headline);
+  const bits = contactBits();
+  if(bits.length) out.push(bits.join(' | '));
+
+  const block = (title, body) => {
+    const rows = Array.isArray(body) ? body.filter(Boolean) : (body ? [body] : []);
+    if(rows.length) out.push('', title.toUpperCase(), ...rows);
+  };
+  const ent = list => A(list).map(e => {
+    const head = [e.title, e.org].filter(Boolean).join(', ') + (e.dates ? ` (${e.dates})` : '');
+    return [head, ...A(e.bullets).map(b=>`  - ${b}`)].join('\n');
+  });
+
+  block('Personal Statement', cv.statement);
+  block('Education', ent(cv.education));
+  block('Experience', ent(cv.experience));
+  block('Volunteering', ent(cv.volunteering));
+  block('Skills', A(cv.skills).join(', '));
+  block('Achievements', A(cv.achievements).map(a=>`- ${a}`));
+  block('Certificates', A(cv.certificates).join(', '));
+  block('Languages', A(cv.languages).join(', '));
+  block('Interests', A(cv.interests).join(', '));
+  block('Availability', cv.availability);
+  return out.join('\n');
 }
 
 /* ---------- result actions ---------- */
+const PAGE_TITLE = document.title;
+
+// The PDF comes from the browser's own print dialog, choosing
+// "Save as PDF" as the destination. The print stylesheet strips the
+// site away and leaves just the CV on A4.
+document.getElementById('pdfBtn').addEventListener('click', ()=>{
+  const nice = (answers.name||'').trim().replace(/[^a-z0-9 ]/gi,'').trim();
+  document.title = nice ? `${nice} CV` : 'My CV';
+  window.print();
+});
+window.addEventListener('afterprint', ()=>{ document.title = PAGE_TITLE; });
+
 document.getElementById('copyBtn').addEventListener('click', e=>{
-  navigator.clipboard.writeText(savedCVs[activeCV].text).then(()=>{
-    e.target.textContent = 'Copied';
-    setTimeout(()=> e.target.textContent = 'Copy CV', 1600);
+  const btn = e.currentTarget;
+  navigator.clipboard.writeText(cvToText()).then(()=>{
+    btn.textContent = 'Copied';
+    setTimeout(()=> btn.textContent = 'Copy text', 1600);
+  }).catch(()=>{
+    btn.textContent = "Couldn't copy";
+    setTimeout(()=> btn.textContent = 'Copy text', 1600);
   });
 });
 
-document.getElementById('downloadBtn').addEventListener('click', ()=>{
-  const cv = savedCVs[activeCV];
-  const safe = (answers.name||'My').trim().split(/\s+/)[0].replace(/[^a-z0-9]/gi,'') || 'My';
-  const blob = new Blob([cv.text], {type:'text/plain'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${safe}-CV.txt`;
-  a.click();
-  URL.revokeObjectURL(a.href);
+document.getElementById('tailorBtn').addEventListener('click', ()=>{
+  document.getElementById('adErr').classList.remove('on');
+  show(paidSlots > 0 ? 'screenAd' : 'screenPay');
 });
 
-document.getElementById('anotherBtn').addEventListener('click', ()=>{
-  if(paidSlots > 0){ useSlot(); } else { show('screenPay'); }
-});
-
-function useSlot(){
-  paidSlots--;
-  store.set('fcv_slots', String(paidSlots));
+document.getElementById('restartBtn').addEventListener('click', ()=>{
   Object.keys(answers).forEach(k => delete answers[k]);
   Object.keys(chipState).forEach(k => delete chipState[k]);
   skillCache.key = null; skillCache.list = [];
-  step = 0;
+  savedCVs = []; activeCV = -1; step = 0;
+  persist();
+  document.getElementById('barNote').textContent = 'Free';
   show('screenFlow');
   render();
-}
+});
 
-/* ---------- payment ---------- */
-document.getElementById('payBtn').addEventListener('click', ()=>{
-  const err = document.getElementById('payErr');
-  if(!CONFIG.stripeLink || !/^https:\/\/(buy\.stripe\.com|.+\.stripe\.com)/.test(CONFIG.stripeLink)){
-    err.textContent = "Card payments aren't switched on yet. Add your Stripe Payment Link to CONFIG.stripeLink at the top of the page source, and set its post-payment redirect to this page with ?paid=1 on the end.";
+/* ---------- tailoring to a job advert (the paid bit) ---------- */
+document.getElementById('adBack').addEventListener('click', ()=> show('screenResult'));
+
+document.getElementById('adGo').addEventListener('click', async ()=>{
+  const ad = document.getElementById('adField').value.trim();
+  const err = document.getElementById('adErr');
+
+  if(ad.length < 60){
+    err.textContent = "There isn't enough there to work with. Paste more of the advert, especially the part about what they're looking for.";
     err.classList.add('on');
     return;
   }
-  const back = encodeURIComponent(location.origin + location.pathname + '?paid=1');
-  location.href = CONFIG.stripeLink + (CONFIG.stripeLink.includes('?') ? '&' : '?') + 'redirect_url=' + back;
+  err.classList.remove('on');
+
+  // Belt and braces: the button is only reachable with a slot, but check anyway.
+  if(paidSlots < 1){ show('screenPay'); return; }
+
+  const ok = await writeCV(ad);
+  if(ok){
+    // Only spend the slot once a CV actually came back.
+    paidSlots--;
+    store.set('fcv_slots', String(paidSlots));
+    document.getElementById('adField').value = '';
+  }
+});
+
+/* ---------- retry after a failed generation ---------- */
+document.getElementById('errRetry').addEventListener('click', ()=> writeCV(lastJobAd));
+document.getElementById('errBack').addEventListener('click', ()=>{
+  show(savedCVs.length ? 'screenResult' : 'screenHome');
+});
+
+/* ---------- payment ----------
+   The Payment Link's own redirect setting sends people back here with
+   ?session_id=... on the URL, which the code at the top of this script
+   checks against Stripe. Nothing is unlocked without that check. */
+document.getElementById('payBtn').addEventListener('click', ()=>{
+  const err = document.getElementById('payErr');
+  if(!CONFIG.stripeLink || !/^https:\/\/(buy\.stripe\.com|.+\.stripe\.com)/.test(CONFIG.stripeLink)){
+    err.textContent = "Card payments aren't switched on yet. Add your Stripe Payment Link to CONFIG.stripeLink near the top of this page's source.";
+    err.classList.add('on');
+    return;
+  }
+  persist();                 // so the CV is still here when they come back
+  location.href = CONFIG.stripeLink;
 });
 document.getElementById('payBack').addEventListener('click', ()=> show('screenResult'));
+
+/* ---------- startup: saved work, then coming back from Stripe ----------
+   This runs last on purpose. It draws the CV, so everything it needs has
+   to already exist above.
+
+   The old version handed the paid feature to anyone whose URL said
+   "?paid=1", which is something you could simply type. Now Stripe sends
+   back a Checkout Session id and api/verify-payment.js asks Stripe
+   whether that session was genuinely paid. A made-up id gets nowhere. */
+(async function start(){
+  if(restore()){
+    paintResult();
+    show('screenResult');
+  }
+
+  const sid = new URLSearchParams(location.search).get('session_id');
+  if(!sid) return;
+
+  // Get it out of the address bar immediately so it can't be copied around.
+  history.replaceState({}, '', location.pathname);
+
+  // One payment unlocks one tailoring, not one per refresh.
+  let used = [];
+  try{ used = JSON.parse(store.get('fcv_used') || '[]'); }catch(e){ used = []; }
+  if(used.includes(sid)) return;
+
+  const failed = msg => {
+    const err = document.getElementById('payErr');
+    err.textContent = msg;
+    err.classList.add('on');
+    show('screenPay');
+  };
+
+  try{
+    const r = await fetch('/api/verify-payment', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ session_id: sid })
+    });
+    const d = await r.json();
+    if(d && d.paid){
+      used.push(sid);
+      store.set('fcv_used', JSON.stringify(used));
+      paidSlots++;
+      store.set('fcv_slots', String(paidSlots));
+      if(savedCVs.length){ paintResult(); show('screenAd'); }
+    } else {
+      failed((d && d.error) || "We couldn't confirm that payment. If money did leave your account, get in touch and we'll sort it out.");
+    }
+  }catch(e){
+    failed("We couldn't reach the server to check your payment. Refresh the page and it should pick it up.");
+  }
+})();
 </script>
 </body>
 </html>
