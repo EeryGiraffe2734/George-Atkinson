@@ -1,0 +1,7 @@
+{
+  "name": "first-cv",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A CV builder for first-time job seekers with no work experience."
+}
