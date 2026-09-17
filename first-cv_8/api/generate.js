@@ -39,7 +39,7 @@ Rules:
 - Some answers describe what the person would actually do in a short everyday situation: a group project, a frustrated customer, a task with no instructions, spotting someone else's mistake. Treat these as evidence of character. Never quote the scenario or their choice back at them. Weave the trait it reveals into the statement naturally.
 - The statement must read like a paragraph a real person wrote about themselves, not a list of adjectives.
 - Turn clubs, volunteering and responsibilities into honest transferable-skill lines. Do not oversell or inflate.
-- "skills" should be 8-14 short phrases, strongest and most relevant first.
+- "skills" should be 8-14 short phrases, strongest and most relevant first. Every single one must be traceable to something they actually told you. If you cannot point to the answer it came from, leave it out.
 - Keep the whole thing to roughly one A4 page.${
     hasSample
       ? `
@@ -48,9 +48,11 @@ Rules:
   }${
     hasJobAd
       ? `
-- A job advert is included below. Tailor the CV to it. Lead with the skills and experience that advert actually asks for, mirror its plain language where that is honest, and angle the statement at that specific role and employer. Reorder "skills" so the ones the advert cares about come first.
-- Tailoring means reordering, emphasising and rewording only. NEVER add a skill, duty or experience the person did not give you, however well it would fit the advert. An honest weaker match beats a fabricated strong one.
-- Set "headline" to match the advertised role.`
+- A job advert is included below. Tailor the CV to it: bring the things they DO have that the advert cares about to the front, angle the statement at that specific role and employer, and set "headline" to match the advertised role.
+- Tailoring means reordering, emphasising and rewording what they gave you. Nothing else.
+- Do NOT mine the advert's requirements list for content. This is the most common way these go wrong. If the advert asks for something they never mentioned, it goes nowhere in the CV: not in "skills", not in a bullet, not hinted at in the statement. For example, if the advert wants "comfortable handling cash" and they never mentioned cash, tills, money or payments, that phrase and anything like it must not appear.
+- Before you output "skills", check each phrase against their actual answers. Anything you cannot trace back to something they said, delete. A shorter honest list is the correct result. Never pad the CV to close a gap between them and the advert.
+- The statement MAY say they are keen to learn something the role involves, as long as it is clearly framed as wanting to learn it and not as experience they already have.`
       : ""
   }`;
 }
